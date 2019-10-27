@@ -22,7 +22,7 @@ class BurgerBuilder extends Component {
 			},
 			totalPrice: 30,
 			purchasable: false,
-			purchasing:false,
+			purchasing: false,
 		};
 	}
 	updatePurchaseState = ingredeints => {
@@ -47,6 +47,7 @@ class BurgerBuilder extends Component {
 			ingredients: updatedIngredients
 		});
 		this.updatePurchaseState(updatedIngredients);
+		console.log(this.state.purchasing);
 	};
 	removeIngredientHandler = type => {
 		const oldCount = this.state.ingredients[type];
@@ -65,11 +66,16 @@ class BurgerBuilder extends Component {
 		});
 		this.updatePurchaseState(updatedIngredients);
 	};
-	purchasingHandler =()=>{
+	purchasingHandler = () => {
+		let cpurchasing = !this.state.purchasing;
 		this.setState({
-			purchasing:true,
+			purchasing:cpurchasing,
 		});
-	}
+		console.log(this.state.purchasing)
+	};
+	purchasingContinueHandler = () => {
+		alert('You continue');
+	};
 
 	render() {
 		const disableInfo = {
@@ -80,8 +86,12 @@ class BurgerBuilder extends Component {
 		}
 		return (
 			<Aux>
-				<Modal show = {this.state.purchasable}>
-					<OrderSummary ingredeints={this.state.ingredients} />
+				<Modal show={this.state.purchasing} modalClosed={this.purchasingHandler}>
+					<OrderSummary
+					pruchasContinueHandler = {this.purchasingContinueHandler}
+					price = {this.state.totalPrice}
+					purchasCancelHandler = {this.purchasingHandler}
+					ingredeints={this.state.ingredients}  />
 				</Modal>
 				<Burger ingredients={this.state.ingredients} />
 				<BuildControls
@@ -90,7 +100,7 @@ class BurgerBuilder extends Component {
 					disableInfo={disableInfo}
 					ingredientAdded={this.addIngredientHandler}
 					ingredientRemoved={this.removeIngredientHandler}
-					ordered ={this.purchasingHandler}
+					ordered={this.purchasingHandler}
 				/>
 			</Aux>
 		);
