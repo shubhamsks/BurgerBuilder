@@ -66,7 +66,7 @@ class BurgerBuilder extends Component {
 		});
 		this.updatePurchaseState(updatedIngredients);
 	};
-	purchasingHandler = () => {
+		purchasingHandler = () => {
 		let cpurchasing = !this.state.purchasing;
 		this.setState({
 			purchasing:cpurchasing,
@@ -75,7 +75,7 @@ class BurgerBuilder extends Component {
 	};
 	purchasingContinueHandler = () => {
 		alert('You continue');
-	};
+	}
 
 	render() {
 		const disableInfo = {
