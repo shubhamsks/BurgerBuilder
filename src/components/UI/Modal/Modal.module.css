@@ -2,7 +2,7 @@
 	position: fixed;
 	z-index: 500;
 	background-color: white;
-	width: auto;
+	width: 100%;
 	border: 1px solid #ccc;
 	box-shadow: 1px 1px 1px black;
 	padding: 10px;
@@ -13,13 +13,14 @@
 	height: 70%;
 	font-size: auto;
 	overflow: scroll;
+	padding: 20px 20px 20px 20px ;
 }
 
 @media (min-width: 600px) {
 	.Modal {
-		width: auto;
-		padding: 16px;
+		width: 700px;
 		height: auto;
+		align-content: center;
 		left: calc(50% - 250px);
 	}
 }
